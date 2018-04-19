@@ -18,23 +18,23 @@ $(document).ready(function(){
 
 	var viewModel = function() {
 		
-		this.clickCount = ko.observable(0),
-		this.name = ko.observable('Bernard'),
+		this.clickCount = ko.observable(0)
+		this.name = ko.observable('Bernard')
 		this.imgSrc = ko.observable('public/assets/images/Bernard.jpg'),
 		this.nicknames = ko.observableArray([{ nickname:'Cornel'}, { nickname:'Jeffery'}, { nickname:'Cash'}, {nickname:'Abbey'}]);
-		this.imgAttr = ko.observable('Creative Commons'),
-
+		this.imgAttr = ko.observable('Creative Commons')
 
 
 		this.incrementCounter = function(){
 
 			this.clickCount(this.clickCount()+1)
-		},
+		}
 
+		var viewModel = this;
 		this.title = ko.computed(function(){
 
-			var title;
-			var clicks = this.clickCount();
+			var title = "";
+			var clicks = viewModel.clickCount();
 
 			if(clicks < 10){
 				title = 'Newborn';
