@@ -4,37 +4,18 @@
 $(document).ready(function(){
 
 
-	// var model = {
+	var Cat = function(){
 
-	// 	clickCount: 0,
-	// 	name: 'Bernard',
-	// 	imgSrc: 'images/Bernard.jpg',
-	// 	nicknames:['Cornel', 'Jeffery', 'Cash', 'Abbey']
-
-			
-	// };
-
-
-
-	var viewModel = function() {
-		
 		this.clickCount = ko.observable(0)
 		this.name = ko.observable('Bernard')
 		this.imgSrc = ko.observable('public/assets/images/Bernard.jpg'),
 		this.nicknames = ko.observableArray([{ nickname:'Cornel'}, { nickname:'Jeffery'}, { nickname:'Cash'}, {nickname:'Abbey'}]);
 		this.imgAttr = ko.observable('Creative Commons')
 
-
-		this.incrementCounter = function(){
-
-			this.clickCount(this.clickCount()+1)
-		}
-
-		var viewModel = this;
 		this.title = ko.computed(function(){
 
 			var title = "";
-			var clicks = viewModel.clickCount();
+			var clicks = this.clickCount();
 
 			if(clicks < 10){
 				title = 'Newborn';
@@ -62,7 +43,22 @@ $(document).ready(function(){
 
 			return title;
 
-		})
+		}, this)
+			
+	};
+
+
+
+	var viewModel = function() {
+		
+		this.currentCat = ko.observable(new Cat());
+
+		this.incrementCounter = function(){
+
+			this.currentCat().clickCount(this.currentCat().clickCount()+1)
+		}
+
+		
 
 	}
 

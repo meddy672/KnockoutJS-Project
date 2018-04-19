@@ -19,12 +19,12 @@
     </div>
 
     <div class="col-lg-10">
-      <h3 data-bind="text: name" class="catnameHeading">Select Your Cat</h3>
-      <h3 data-bind="text: title"></h3>
-      <h6 data-bind="text: clickCount" class="mainCounter"></h6>
-      <img data-bind="click: incrementCounter, attr: {src: imgSrc}" src="http://via.placeholder.com/350x150" class="mainimg">
+      <h3 data-bind="text: currentCat().name" class="catnameHeading">Select Your Cat</h3>
+      <h3 data-bind="text: currentCat().title"></h3>
+      <h6 data-bind="text: currentCat().clickCount" class="mainCounter"></h6>
+      <img data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}" src="http://via.placeholder.com/350x150" class="mainimg">
       <h4>Nicknames:</h4>
-      <div data-bind="foreach: nicknames">
+      <div data-bind="foreach: currentCat().nicknames">
       	<p data-bind="text: nickname"></p>
       </div>
       
